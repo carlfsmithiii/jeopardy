@@ -16,7 +16,6 @@ class JeopardyGrid extends Grid {
         return new JeopardyCell({column, row, cellOptions});
     }
     onClick(cell) {
-        // console.log(cell);
         cell.handleClick();
     }
 }
@@ -32,7 +31,6 @@ class JeopardyCell extends Cell {
         } else {
             this.isAQuestionCell = false;
         }
-        // this.questionObject = row > 0 ? this._selectQuestion(this.categoryListPromise, column) : null;
         this.categoryTitle = this._getCategoryTitle(this.categoryListPromise, column);
 
         this._appendTextToCellNode();
@@ -102,7 +100,7 @@ class CategoryObjectsList {
     constructor(categoryList) {
         let categories = [];
         for (let categoryNumber of categoryList) {
-            categories.push(fetch(`http://jservice.io/api/category?id=${categoryNumber}`).then(res => res.json()));
+            categories.push(fetch(`https://cors-anywhere.herokuapp.com/http://jservice.io/api/category?id=${categoryNumber}`).then(res => res.json()));
         }
         this.list = Promise.all(categories).then(categoryObjects => categoryObjects);
     }

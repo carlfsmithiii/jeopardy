@@ -1,9 +1,10 @@
 const gameParent = document.getElementById("jeopardy-game-container");
 //const jeopardyBoard = new JeopardyGrid(gameParent);
-const grid = generateJeopardy(gameParent, [21, 508, 561, 420, 37, 1195], 200);
 
+let firstRowValue = 200;
 let points = 0;
 updatePoints();
+const grid = generateJeopardy(gameParent, [21, 508, 561, 420, 37, 1195], 200);
 
 document.getElementById("check-answer-button").addEventListener('click', () => {
     const questionNodeReference = document.getElementsByClassName("grid")[0].lastChild;
@@ -11,7 +12,10 @@ document.getElementById("check-answer-button").addEventListener('click', () => {
         return;
     } 
     const trueAnswer = questionNodeReference.cellInstance.questionObject.answer.toLowerCase();
-    const userAnswer = document.getElementById("answer-text").value.toLowerCase();
+    const answerTextField = document.getElementById("answer-text");
+    const userAnswer = answerTextField.value.toLowerCase();
+    answerTextField.value = "";
+    
     questionNodeReference.cellInstance.handleClick();
     if (userAnswer == trueAnswer) {
         points += questionNodeReference.cellInstance.questionObject.value;

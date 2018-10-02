@@ -4,6 +4,7 @@ class Grid {
         this.columnCount = columnCount;
         this.options = gridOptions;
         this.nodeReference = this._createGrid(cellOptions);
+        parentNode.innerHTML = "";
         parentNode.appendChild(this.nodeReference);
     }
     _createGrid(cellOptions) {

@@ -1,5 +1,5 @@
 class JeopardyGrid extends Grid {
-    constructor(parentNode, categoryObjectsList, moneyIncrement = 200) {
+    constructor(parentNode, categoryObjectsList, moneyIncrement = 100) {
         super({
             rowCount: 6,
             columnCount: 6,

@@ -8,6 +8,14 @@ body {
     text-align: center;
 }
 
+#round-selector-div {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    height: 30px;
+    width: 70px;
+}
+
 .brightercell {
     background-color: rgba(255, 255, 255, 0.3);
     border: 1px solid white;

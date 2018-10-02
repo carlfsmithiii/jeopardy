@@ -1,10 +1,15 @@
 const gameParent = document.getElementById("jeopardy-game-container");
 //const jeopardyBoard = new JeopardyGrid(gameParent);
 
-let firstRowValue = 200;
+let firstRowValue = 100;
 let points = 0;
 updatePoints();
-const grid = generateJeopardy(gameParent, [21, 508, 561, 420, 37, 1195], 200);
+const grid = generateJeopardy(gameParent, [21, 508, 561, 420, 37, 1195], firstRowValue);
+
+document.getElementById("round-selector").addEventListener('change', (event) => {
+    firstRowValue = Number(document.getElementById("round-selector").value);
+    generateJeopardy(gameParent, [21, 508, 561, 420, 37, 1195], firstRowValue);
+});
 
 document.getElementById("check-answer-button").addEventListener('click', () => {
     const questionNodeReference = document.getElementsByClassName("grid")[0].lastChild;

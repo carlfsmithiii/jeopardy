@@ -57,8 +57,6 @@ class Grid {
     }
     handleClick(event) {
         const cellNode = event.target;
-        console.log(event.target);
-        console.log(event.target.cellInstance);
         if (!(cellNode.classList.contains('cell'))) return;
         
         this.onClick(cellNode.cellInstance);

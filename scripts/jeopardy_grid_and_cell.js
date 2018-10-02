@@ -16,7 +16,7 @@ class JeopardyGrid extends Grid {
         return new JeopardyCell({column, row, cellOptions});
     }
     onClick(cell) {
-        console.log(cell);
+        // console.log(cell);
         cell.handleClick();
     }
 }
@@ -26,7 +26,13 @@ class JeopardyCell extends Cell {
         super({row, column, cellOptions});
         this.dollarAmount = this.row * cellOptions.moneyIncrement;
         this.categoryListPromise = cellOptions.categoryObjectsList.list;
-        this.questionObject = row > 0 ? this._selectQuestion(this.categoryListPromise, column) : null;
+        if (row > 0) {
+            this.questionObject =this._selectQuestion(this.categoryListPromise, column);
+            this.isAQuestionCell = true;
+        } else {
+            this.isAQuestionCell = false;
+        }
+        // this.questionObject = row > 0 ? this._selectQuestion(this.categoryListPromise, column) : null;
         this.categoryTitle = this._getCategoryTitle(this.categoryListPromise, column);
 
         this._appendTextToCellNode();
@@ -56,7 +62,7 @@ class JeopardyCell extends Cell {
         }
     }
     async handleClick() {
-        if (this.hasBeenClicked) {
+        if (this.hasBeenClicked || !this.isAQuestionCell) {
             return;
         } else {
             const questionObject = await this.questionObject;

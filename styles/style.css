@@ -5,6 +5,7 @@
 
 body {
     background-color: #646464;
+    text-align: center;
 }
 
 .brightercell {
@@ -14,14 +15,11 @@ body {
     width: var(--cell-dimension);
 }
 
-/* #jeopard-game-container {
-    position: relative;
-} */
-
 .grid {
     height: var(--grid-height);
     width: calc(var(--cell-dimension) * var(--column-count));position: relative; 
     margin: auto;
+    margin-bottom: 20px;
     box-sizing: border-box;
 }
 
@@ -50,12 +48,7 @@ body {
     animation-name: questionExpand;
     animation-duration: 1s;
     animation-fill-mode: forwards;
-    /* font-size: 20vh; */
-    /* transform: scale(6);
-    transition-duration: 1s;
-    transition-property: */ 
     background-color: #fff; 
-    /* line-height: 100%; */
     text-align: center;
     line-height: 100%;
 }

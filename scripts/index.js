@@ -1,3 +1,27 @@
 const gameParent = document.getElementById("jeopardy-game-container");
 //const jeopardyBoard = new JeopardyGrid(gameParent);
 const grid = generateJeopardy(gameParent, [21, 508, 561, 420, 37, 1195], 200);
+
+let points = 0;
+updatePoints();
+
+document.getElementById("check-answer-button").addEventListener('click', () => {
+    const questionNodeReference = document.getElementsByClassName("grid")[0].lastChild;
+    if (!questionNodeReference.classList.contains("question-cell")) {
+        return;
+    } 
+    const trueAnswer = questionNodeReference.cellInstance.questionObject.answer.toLowerCase();
+    const userAnswer = document.getElementById("answer-text").value.toLowerCase();
+    questionNodeReference.cellInstance.handleClick();
+    if (userAnswer == trueAnswer) {
+        points += questionNodeReference.cellInstance.questionObject.value;
+        updatePoints();
+        console.log("Correct!");
+    }
+});
+
+function updatePoints() {
+    const pointsNode = document.getElementById("points");
+    pointsNode.innerText = "Points: " + points;
+}
+// document.getElementById("check-answer-button")

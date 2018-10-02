@@ -13,7 +13,6 @@ class Grid {
         for (let row = 0; row < this.rowCount; row++) {
             this.model.push([]);
             for (let column = 0; column < this.columnCount; column++) {
-                // const cell = new Cell({column, row, cellOptions});
                 const cell = this._createCell({column, row, cellOptions});
                 this.model[row][column] = cell;
                 gridNode.appendChild(cell.nodeReference);
@@ -58,6 +57,8 @@ class Grid {
     }
     handleClick(event) {
         const cellNode = event.target;
+        console.log(event.target);
+        console.log(event.target.cellInstance);
         if (!(cellNode.classList.contains('cell'))) return;
         
         this.onClick(cellNode.cellInstance);
@@ -110,14 +111,3 @@ class Cell {
     }
 }
 
-// const gridParent = document.getElementById("grid-container");
-// const grid = new Grid({
-//     rowCount: 5, 
-//     columnCount: 5, 
-//     parentNode: gridParent,
-//     cellOptions: {
-//         onclick: function() {
-//             this.toggleClickedStatus();
-//         },
-//     }
-// });
